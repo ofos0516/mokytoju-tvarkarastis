@@ -9,11 +9,11 @@ a:hover {
 }
 
 a:visited {
-  @apply text-purple-600
+  @apply text-purple-600;
 }
 
 .article h2 {
-  @apply text-2x1 font-bold
+  @apply text-2x1 font-bold;
 }
 
 :root {
