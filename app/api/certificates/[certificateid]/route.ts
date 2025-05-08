@@ -13,9 +13,9 @@ export async function PUT(
 }
 export async function DELETE(
   request: NextRequest,
-  res: { params: { certificateId: string } }
+  res: { params: { certificateid: string } }
 ) {
   const certificateService = new CertificateService()
-  await certificateService.deleteCertificate(res.params.certificateId)
+  await certificateService.deleteCertificate(res.params.certificateid)
   return Response.json({ messsage: "Duomenys sėkmingai ištrinti" })
 }

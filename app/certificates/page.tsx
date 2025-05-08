@@ -7,5 +7,5 @@ export default async function CertificatePage() {
     `/api/classificators/certificates`
   )
 
-  return <Wrapper certTypes={certTypes} />
+  return <Wrapper certTypes={certTypes ?? []} />
 }

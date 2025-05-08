@@ -8,8 +8,7 @@ import { useActionState } from "react"
 import { ICertType } from "@/models/cert-type-model"
 import { ICertificate } from "@/models/certificate-model"
 import { createCertificates } from "@/actions/certificates"
-import { useBoundStore } from "@/store/use-bound-store"
-import { useShallow } from "zustand/react/shallow"
+
 const initialState: IState = {
   message: "",
   errors: undefined,
@@ -26,11 +25,7 @@ type IProps = {
 export function FormFields(props: IProps) {
   const ref = useRef<HTMLFormElement>(null)
   const { certTypes, getCertFromApi, editCert, setEditCert } = props
-  const { setMessage } = useBoundStore(
-    useShallow((state) => ({
-      setMessage: state.setMessage,
-    }))
-  )
+
   const [state, formAction] = useActionState<IState, FormData>(
     createCertificates,
     initialState
@@ -50,7 +45,6 @@ export function FormFields(props: IProps) {
   useEffect(() => {
     if (state.isSaved) {
       getCertFromApi()
-      state.isSaved && setMessage("Duomenys išsaugoti")
     }
   }, [state])
   const handleAction = (data: FormData) => {
