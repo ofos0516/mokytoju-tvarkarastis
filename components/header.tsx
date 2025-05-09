@@ -2,7 +2,7 @@ import { AcademicCapIcon } from "@heroicons/react/24/solid"
 import { Nav } from "./nav"
 import { INav } from "@/types/nav-t"
 const menu: INav[] = [
-  { title: "Mokytojai", slug: "certificates" },
+  { title: "Mokytojai", slug: "teachers" },
   { title: "Dalykai", slug: "subjects" },
   { title: "Pamokos", slug: "programmes" },
 ]

@@ -2,20 +2,31 @@
 import { ICertType } from "@/models/cert-type-model"
 import { ICertificate } from "@/models/certificate-model"
 import { Form } from "./form"
-import { CertList } from "./list"
+import { TeacherList } from "./list"
 import { useEffect, useState } from "react"
 import { getApi } from "@/utils/server-api"
+import { IName } from "@/models/name-model"
+import { ISurname } from "@/models/surname-model"
+import { IPhone } from "@/models/phone-model"
+import { IAddress } from "@/models/address-model"
 
 type IProps = { certTypes: ICertType[] }
 
 export function Wrapper(props: IProps) {
   const { certTypes } = props
-  const [editCert, setEditCert] = useState<ICertificate | undefined>()
-  const [certificates, setCertificates] = useState<ICertificate[]>([])
+  const [editCert, setEditCert] = useState<any | undefined>()
+  const [certificates, setCertificates] = useState<any[]>([])
+  const [names, setNames] = useState<IName[]>([])
+  const [surnames, setSurnames] = useState<ISurname[]>([])
+  const [phones, setPhones] = useState<IPhone[]>([])
+  const [addresses, setAddresses] = useState<IAddress[]>([])
 
   const getCertFromApi = () => {
-    getApi<ICertificate[]>(`/api/certificates`).then((res) => {
-      setCertificates(res ?? [])
+    getApi<any>(`/api/teachers`).then((res) => {
+      setNames(res.names ?? [])
+      setSurnames(res.surnames ?? [])
+      setPhones(res.phones ?? [])
+      setAddresses(res.addresses ?? [])
     })
   }
 
@@ -31,11 +42,15 @@ export function Wrapper(props: IProps) {
         setEditCert={setEditCert}
         editCert={editCert}
       />
-      <CertList
+      <TeacherList
         certTypes={certTypes}
         getCertFromApi={getCertFromApi}
         certificates={certificates}
         setEditCert={setEditCert}
+        names={names}
+        surnames={surnames}
+        phones={phones}
+        addresses={addresses}
       />
     </div>
   )
