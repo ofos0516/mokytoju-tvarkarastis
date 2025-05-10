@@ -45,7 +45,6 @@ export function Wrapper(props: IProps) {
       <TeacherList
         certTypes={certTypes}
         getCertFromApi={getCertFromApi}
-        certificates={certificates}
         setEditCert={setEditCert}
         names={names}
         surnames={surnames}

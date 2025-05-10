@@ -10,7 +10,6 @@ import { IAddress } from "@/models/address-model"
 
 type IProps = {
   certTypes: ICertType[]
-  certificates: ICertificate[]
   names: IName[]
   surnames: ISurname[]
   phones: IPhone[]
