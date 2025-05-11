@@ -4,7 +4,7 @@ import { INav } from "@/types/nav-t"
 const menu: INav[] = [
   { title: "Mokytojai", slug: "teachers" },
   { title: "Dalykai", slug: "subjects" },
-  { title: "Pamokos", slug: "programmes" },
+  { title: "Pamokos", slug: "lessons" },
 ]
 
 export function Header() {

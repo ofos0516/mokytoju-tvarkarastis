@@ -75,30 +75,26 @@ export function TeacherList(props: IProps) {
         {subjects.map((sub) => (
           <tr key={sub.id}>
             <td className="px-6 py-4">{sub.subject}</td>
-            <td>
-              {offices.map((off) => (
-                <tr key={off.id}>
-                  <td className="px-6 py-4">{off.office}</td>
-                </tr>
-              ))}
-            </td>
-            <td>
-              {lstarts.map((lst) => (
-                <tr key={lst.id}>
-                  <td className="px-6 py-4">{lst.lstart}</td>
-                </tr>
-              ))}
-            </td>
-            {lends.map((len) => (
-              <tr key={len.id}>
-                <td className="px-6 py-4">{len.lend}</td>
-              </tr>
-            ))}
             <td className="px-6 py-4">
-              <button title="Keisti duomenis" onClick={() => changeCert(n.id)}>
+              {offices.find((off) => off.id === sub.id)?.office}
+            </td>
+            <td className="px-6 py-4">
+              {lstarts.find((lst) => lst.id === sub.id)?.lstart}
+            </td>
+            <td className="px-6 py-4">
+              {lends.find((len) => len.id === sub.id)?.lend}
+            </td>
+            <td className="px-6 py-4 flex gap-2">
+              <button
+                title="Keisti duomenis"
+                onClick={() => changeCert(sub.id)}
+              >
                 <PencilIcon className="w-5 h-5 stroke-blue-600" />
               </button>
-              <button title="Trinti duomenis" onClick={() => deleteCert(n.id)}>
+              <button
+                title="Trinti duomenis"
+                onClick={() => deleteCert(sub.id)}
+              >
                 <TrashIcon className="w-5 h-5 stroke-red-600" />
               </button>
             </td>
