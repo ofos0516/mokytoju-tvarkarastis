@@ -18,69 +18,51 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  try {
-    const data = await request.json()
-    console.log("POST /api/subjects received data:", data)
+  const data = await request.json()
 
-    // Generate a single MongoDB ObjectId to use for all records
-    const sharedId = new Types.ObjectId()
+  // Generate a shared ID for all documents
+  const sharedId = new Types.ObjectId()
 
-    // Create objects with the same ID for all services
-    const subjectData = {
-      _id: sharedId,
-      typeId: data.typeId || "",
-      subject: data.subject,
-      isCreated: true,
-    }
-
-    const officeData = {
-      _id: sharedId,
-      typeId: data.typeId || "",
-      office: data.office,
-      isCreated: true,
-    }
-
-    const lstartData = {
-      _id: sharedId,
-      typeId: data.typeId || "",
-      lstart: data.lstart,
-      isCreated: true,
-    }
-
-    const lendData = {
-      _id: sharedId,
-      typeId: data.typeId || "",
-      lend: data.lend,
-      isCreated: true,
-    }
-
-    // Save all records with the same ID
-    const subjectService = new SubjectService()
-    await subjectService.saveSubject(subjectData)
-
-    const officeService = new OfficeService()
-    await officeService.saveOffice(officeData)
-
-    const lstartService = new LstartService()
-    await lstartService.saveLstart(lstartData)
-
-    const lendService = new LendService()
-    await lendService.saveLend(lendData)
-
-    console.log("Subject data saved successfully with ID:", sharedId.toString())
-
-    return Response.json({
-      message: "Duomenys išsaugoti",
-      id: sharedId.toString(),
-    })
-  } catch (error) {
-    console.error("Error in POST /api/subjects:", error)
-    return Response.json(
-      {
-        message: "Klaida išsaugant duomenis",
-        error: String(error),
-      },
-      { status: 500 }
-    )
+  // Create data objects with the shared ID
+  const subjectData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    subject: data.subject,
   }
+
+  const officeData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    office: data.office,
+  }
+
+  const lstartData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    lstart: data.lstart,
+  }
+
+  const lendData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    lend: data.lend,
+  }
+
+  // Save all documents with the same ID
+  const subjectService = new SubjectService()
+  await subjectService.saveSubject(subjectData)
+
+  const officeService = new OfficeService()
+  await officeService.saveOffice(officeData)
+
+  const lstartService = new LstartService()
+  await lstartService.saveLstart(lstartData)
+
+  const lendService = new LendService()
+  await lendService.saveLend(lendData)
+
+  return Response.json({
+    message: "Duomenys išsaugoti",
+    id: sharedId.toString(),
+  })
 }

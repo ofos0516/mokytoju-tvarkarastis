@@ -54,8 +54,8 @@ export function FormFields(props: IProps) {
           label="Dalykas"
           name="subject"
           isRequired={true}
-          defaultValue={editCert?.name}
-          errors={state?.errors?.name}
+          defaultValue={editCert?.subject}
+          errors={state?.errors?.subject}
         />
       </div>
       <div className="grid grid-cols-2">
@@ -63,8 +63,8 @@ export function FormFields(props: IProps) {
           label="Kabinetas"
           name="office"
           isRequired={true}
-          defaultValue={editCert?.surname}
-          errors={state?.errors?.surname}
+          defaultValue={editCert?.office}
+          errors={state?.errors?.office}
         />
       </div>
       <div className="grid grid-cols-2">
@@ -72,8 +72,8 @@ export function FormFields(props: IProps) {
           label="Pamokos pradžia"
           name="lstart"
           isRequired={true}
-          defaultValue={editCert?.address}
-          errors={state?.errors?.address}
+          defaultValue={editCert?.lstart}
+          errors={state?.errors?.lstart}
         />
       </div>
       <div className="grid grid-cols-2">
@@ -81,8 +81,8 @@ export function FormFields(props: IProps) {
           label="Pamokos pabaiga"
           name="lend"
           isRequired={true}
-          defaultValue={editCert?.phone}
-          errors={state?.errors?.phone}
+          defaultValue={editCert?.lend}
+          errors={state?.errors?.lend}
         />
       </div>
       {editCert?.id && <input type="hidden" name="id" value={editCert.id} />}

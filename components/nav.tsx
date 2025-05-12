@@ -16,8 +16,10 @@ export function Nav(props: IProps) {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href={HOST} className="flex items-center space-x-3">
           <div className="flex gap-x-2">
-            <AcademicCapIcon className="h-8 w-8 stroke-orange-700" />
-            <div className="text-2x1 text-orange-700 font-bold">KAS</div>
+            <AcademicCapIcon className="h-8 w-8 stroke-blue-700" />
+            <div className="text-2x1 text-blue-700 font-bold">
+              Mokytojų tvarkaraštis
+            </div>
           </div>
         </Link>
         <button

@@ -37,7 +37,7 @@ export function Modal(props: IProps) {
   }, [show, wrapperRef])
 
   return openModal ? (
-    <div className="fixed left-0 top-- z-0 box-border flex h-screen w-screen justify-center bg-black bg-opacity-50 align-middle">
+    <div className="fixed left-0 top-- z-0 box-border flex h-screen w-screen justify-center bg-transparent bg-opacity-50 align-middle">
       <div
         ref={wrapperRef}
         className="w-full max-w-2xl overflow-y-auto rounded-lg bg-white shadow h-fit"

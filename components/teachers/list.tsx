@@ -75,29 +75,16 @@ export function TeacherList(props: IProps) {
         {names.map((n) => (
           <tr key={n.id}>
             <td className="px-6 py-4">{n.name}</td>
-            <td>
-              {surnames.map((s) => (
-                <tr key={s.id}>
-                  <td className="px-6 py-4">{s.surname}</td>
-                </tr>
-              ))}
-            </td>
-            <td>
-              {addresses.map((a) => (
-                <tr key={a.id}>
-                  <td className="px-6 py-4">{a.address}</td>
-                </tr>
-              ))}
-            </td>
-            {phones.map((p) => (
-              <tr key={p.id}>
-                <td className="px-6 py-4">{p.phone}</td>
-              </tr>
-            ))}
             <td className="px-6 py-4">
-              <button title="Keisti duomenis" onClick={() => changeCert(n.id)}>
-                <PencilIcon className="w-5 h-5 stroke-blue-600" />
-              </button>
+              {surnames.find((s) => s.id === n.id)?.surname}
+            </td>
+            <td className="px-6 py-4">
+              {addresses.find((a) => a.id === n.id)?.address}
+            </td>
+            <td className="px-6 py-4">
+              {phones.find((p) => p.id === n.id)?.phone}
+            </td>
+            <td className="px-6 py-4">
               <button title="Trinti duomenis" onClick={() => deleteCert(n.id)}>
                 <TrashIcon className="w-5 h-5 stroke-red-600" />
               </button>

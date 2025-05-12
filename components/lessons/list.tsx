@@ -45,9 +45,6 @@ export function TeacherList(props: IProps) {
           <tr key={n.id}>
             <td className="px-6 py-4">{n.lesson}</td>
             <td className="px-6 py-4">
-              <button title="Keisti duomenis" onClick={() => changeCert(n.id)}>
-                <PencilIcon className="w-5 h-5 stroke-blue-600" />
-              </button>
               <button title="Trinti duomenis" onClick={() => deleteCert(n.id)}>
                 <TrashIcon className="w-5 h-5 stroke-red-600" />
               </button>

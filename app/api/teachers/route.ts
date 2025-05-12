@@ -3,6 +3,7 @@ import { NameService } from "@/services/name-service"
 import { PhoneService } from "@/services/phone-service"
 import { SurnameService } from "@/services/surname-service"
 import { type NextRequest } from "next/server"
+import { Types } from "mongoose"
 
 export async function GET(request: NextRequest) {
   const addressService = new AddressService()
@@ -17,14 +18,51 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const res = await request.json()
-  const addressService = new AddressService()
-  await addressService.saveAddress(res)
+  const data = await request.json()
+
+  // Generate a shared ID for all documents
+  const sharedId = new Types.ObjectId()
+
+  // Create data objects with the shared ID
+  const nameData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    name: data.name,
+  }
+
+  const surnameData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    surname: data.surname,
+  }
+
+  const addressData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    address: data.address,
+  }
+
+  const phoneData = {
+    _id: sharedId,
+    typeId: data.typeId,
+    phone: data.phone,
+  }
+
+  // Save all documents with the same ID
   const nameService = new NameService()
-  await nameService.saveName(res)
-  const phoneService = new PhoneService()
-  await phoneService.savePhone(res)
+  await nameService.saveName(nameData)
+
   const surnameService = new SurnameService()
-  await surnameService.saveSurname(res)
-  return Response.json({ message: "Duomenys išsaugoti" })
+  await surnameService.saveSurname(surnameData)
+
+  const addressService = new AddressService()
+  await addressService.saveAddress(addressData)
+
+  const phoneService = new PhoneService()
+  await phoneService.savePhone(phoneData)
+
+  return Response.json({
+    message: "Duomenys išsaugoti",
+    id: sharedId.toString(),
+  })
 }

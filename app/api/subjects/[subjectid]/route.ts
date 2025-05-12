@@ -23,13 +23,11 @@ export async function DELETE(
   const officeService = new OfficeService()
   const lstartService = new LstartService()
   const lendService = new LendService()
-  try {
-    await subjectService.deleteSubject(res.params.subjectid)
-    await officeService.deleteOffice(res.params.subjectid)
-    await lstartService.deleteLstart(res.params.subjectid)
-    await lendService.deleteLend(res.params.subjectid)
-  } catch (error) {
-    return Response.json({ messsage: "Klaida trinant duomenis" })
-  }
+
+  await subjectService.deleteSubject(res.params.subjectid)
+  await officeService.deleteOffice(res.params.subjectid)
+  await lstartService.deleteLstart(res.params.subjectid)
+  await lendService.deleteLend(res.params.subjectid)
+
   return Response.json({ messsage: "Duomenys sėkmingai ištrinti" })
 }

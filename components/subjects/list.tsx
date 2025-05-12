@@ -86,12 +86,6 @@ export function TeacherList(props: IProps) {
             </td>
             <td className="px-6 py-4 flex gap-2">
               <button
-                title="Keisti duomenis"
-                onClick={() => changeCert(sub.id)}
-              >
-                <PencilIcon className="w-5 h-5 stroke-blue-600" />
-              </button>
-              <button
                 title="Trinti duomenis"
                 onClick={() => deleteCert(sub.id)}
               >

@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="lt">
-      <body className="container mx-auto max-w-screen-x1">
+      <body className="container mx-auto max-w-screen-x1 bg-white text-gray-900">
         <Header />
         {children}
         <Footer />
