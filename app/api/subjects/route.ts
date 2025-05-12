@@ -20,10 +20,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const data = await request.json()
 
-  // Generate a shared ID for all documents
   const sharedId = new Types.ObjectId()
 
-  // Create data objects with the shared ID
   const subjectData = {
     _id: sharedId,
     typeId: data.typeId,
@@ -48,7 +46,6 @@ export async function POST(request: NextRequest) {
     lend: data.lend,
   }
 
-  // Save all documents with the same ID
   const subjectService = new SubjectService()
   await subjectService.saveSubject(subjectData)
 
